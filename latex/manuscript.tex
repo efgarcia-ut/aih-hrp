@@ -5,17 +5,17 @@
 %% The original source files were:
 %%
 %% samples.dtx  (with options: `all,proceedings,bibtex,manuscript')
-%% 
+%%
 %% IMPORTANT NOTICE:
-%% 
+%%
 %% For the copyright see the source file.
-%% 
+%%
 %% Any modified versions of this file must be renamed
 %% with new filenames distinct from sample-manuscript.tex.
-%% 
+%%
 %% For distribution of the original source see the terms
 %% for copying and modification in the file samples.dtx.
-%% 
+%%
 %% This generated file may be distributed as long as the
 %% original source files, as listed above, are part of the
 %% same distribution. (The sources need not necessarily be
@@ -248,10 +248,10 @@ We evaluated two architectures:
 \subsection{Training and Evaluation}
 We performed an 80/20 split into training and validation sets. All preprocessing (imputation + scaling) was fit on the training fold and applied to both splits in order to prevent data leakage. All sources of randomness were seeded for deterministic output. Models were trained for 100 epochs with:
 \begin{itemize}
-  \item \textbf{Batch size:} 256  
-  \item \textbf{Optimizer:} AdamW with learning rate $2\times10^{-3}$ and weight decay $3\times10^{-4}$  
-  \item \textbf{Loss:} mean squared error (MSE) on standardized age  
-  \item \textbf{Scheduler:} ReduceLROnPlateau (factor=0.5, patience=10) on validation loss  
+  \item \textbf{Batch size:} 256
+  \item \textbf{Optimizer:} AdamW with learning rate $2\times10^{-3}$ and weight decay $3\times10^{-4}$
+  \item \textbf{Loss:} mean squared error (MSE) on standardized age
+  \item \textbf{Scheduler:} ReduceLROnPlateau (factor=0.5, patience=10) on validation loss
 \end{itemize}
 Final performance was reported as RMSE on the original age scale (years) by unscaling MSE via multiplication by $\sigma_y^2$ and taking the square root.
 
@@ -264,7 +264,7 @@ Figure~\ref{fig:pipeline} illustrates the end‐to‐end pipeline from raw data 
                       text width=8em, align=center,
                       rounded corners, minimum height=3em},
       arrow/.style = {-{Stealth}, thick},
-      node distance=1.5cm
+      node distance=.5cm
     ]
     % Nodes
     \node[block] (extract) {Raw Data Extraction\\(BigQuery SQL)};
@@ -337,6 +337,12 @@ Future work can explore several avenues for enhancing and extending this approac
 \end{itemize}
 
 Overall, our findings highlight the promise of efficient deep‐learning ensembles for scalable, cost‐effective biological‐age estimation and lay the groundwork for richer, clinically actionable models in the future.
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
 
 \end{document}
 \endinput
